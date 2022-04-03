@@ -1,0 +1,39 @@
+{
+  "name": "MyForest",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "background": {
+    "service_worker": "background.js",
+    "persistant": true,
+    "action": {}
+  },
+  "permissions": [    
+    "activeTab",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+          "matches": ["*://opensea.io/*"],
+          "js": ["app.js"],
+          "run_at": "document_end"
+    },
+    
+    {
+        "matches": ["*://opensea.io/assets/*"],
+        "js": ["purchase_detection.js"]
+    }
+  ],
+
+  "action" : {
+    "default_icon": {
+      "16" : "icon.png",
+      "24" : "icon.png",
+      "32" : "icon.png"
+  },
+  "default_title" : "My Forest",
+  "default_popup": "popup/popup.html"
+  },
+  "options_page": "options/options.html"
+
+  
+}
